@@ -2,7 +2,7 @@
 
 A small web app for memorising English vocabulary: read the Chinese meaning and write the English word, or listen to the pronunciation and spell it. Anything you get wrong gets collected for a second pass.
 
-**Use it online: <https://texassss6510.github.io/Word-Test/>**
+**Use it online: <https://texasss6510.github.io/Word-Test/>**
 
 No account, no install, works on desktop and mobile.
 
@@ -192,7 +192,7 @@ Icons from [Lucide](https://lucide.dev/) (ISC licence).
 
 一个背单词的小网页：看着中文释义写英文，或者听发音把它拼出来，写错的词会自动收起来供你复习。
 
-**在线使用：<https://texassss6510.github.io/Word-Test/>**
+**在线使用：<https://texasss6510.github.io/Word-Test/>**
 
 不用注册、不用安装，电脑和手机都能用。
 
