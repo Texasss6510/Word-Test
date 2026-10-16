@@ -1,1 +1,518 @@
-[]
+[
+    {
+        "english": "almond",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "杏仁；杏树"
+            }
+        ],
+        "phonetic": "/ˈɑːmənd/"
+    },
+    {
+        "english": "connotation",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "内涵，含义；言外之意"
+            }
+        ],
+        "phonetic": "/ˌkɒnəˈteɪʃn/"
+    },
+    {
+        "english": "put down",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "贬低，羞辱"
+            }
+        ],
+        "phonetic": "/pʊt daʊn/"
+    },
+    {
+        "english": "fellowship",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "友谊，交情；团体，协会；奖学金；（高校）研究员，研究员项目"
+            }
+        ],
+        "phonetic": "/ˈfeləʊʃɪp/"
+    },
+    {
+        "english": "inherently",
+        "pos": [
+            {
+                "abbreviation": "adv.",
+                "meaning": "本质上，内在地，本来"
+            }
+        ],
+        "phonetic": "/ɪnˈherəntli/"
+    },
+    {
+        "english": "legitimate",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "合法的；合理的"
+            }
+        ],
+        "phonetic": "/lɪˈdʒɪtɪmət/"
+    },
+    {
+        "english": "that being said",
+        "pos": [
+            {
+                "abbreviation": "phr.",
+                "meaning": "话虽如此，尽管如此"
+            }
+        ],
+        "phonetic": "/ðæt ˈbiːɪŋ sed/"
+    },
+    {
+        "english": "at times",
+        "pos": [
+            {
+                "abbreviation": "phr.",
+                "meaning": "有时，间或"
+            }
+        ],
+        "phonetic": "/æt taɪmz/"
+    },
+    {
+        "english": "pros and cons",
+        "pos": [
+            {
+                "abbreviation": "phr.",
+                "meaning": "利弊，优缺点"
+            }
+        ],
+        "phonetic": "/prəʊz ənd kɒnz/"
+    },
+    {
+        "english": "captivate",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "迷住，使着迷"
+            }
+        ],
+        "phonetic": "/ˈkæptɪveɪt/"
+    },
+    {
+        "english": "captivating",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "迷人的，有魅力的"
+            }
+        ],
+        "phonetic": "/ˈkæptɪveɪtɪŋ/"
+    },
+    {
+        "english": "myriad",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "无数，大量"
+            },
+            {
+                "abbreviation": "adj.",
+                "meaning": "无数的，大量的"
+            }
+        ],
+        "phonetic": "/ˈmɪriəd/"
+    },
+    {
+        "english": "open-ended",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "开放式的，无限制的"
+            }
+        ],
+        "phonetic": "/ˌəʊpən ˈendɪd/"
+    },
+    {
+        "english": "lexical",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "词汇的"
+            }
+        ],
+        "phonetic": "/ˈleksɪkl/"
+    },
+    {
+        "english": "lexicon",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "词典；词汇表；词汇"
+            }
+        ],
+        "phonetic": "/ˈleksɪkən/"
+    },
+    {
+        "english": "analogy",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "类比，比拟"
+            }
+        ],
+        "phonetic": "/əˈnælədʒi/"
+    },
+    {
+        "english": "stay put",
+        "pos": [
+            {
+                "abbreviation": "phr.",
+                "meaning": "留在原地，不动"
+            }
+        ],
+        "phonetic": "/steɪ pʊt/"
+    },
+    {
+        "english": "blink",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "眨眼；闪烁"
+            },
+            {
+                "abbreviation": "n.",
+                "meaning": "眨眼；闪烁"
+            }
+        ],
+        "phonetic": "/blɪŋk/"
+    },
+    {
+        "english": "blank",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "空白的；茫然的"
+            },
+            {
+                "abbreviation": "n.",
+                "meaning": "空白；空白处"
+            },
+            {
+                "abbreviation": "v.",
+                "meaning": "使空白；遗忘"
+            }
+        ],
+        "phonetic": "/blæŋk/"
+    },
+    {
+        "english": "marathon",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "马拉松；持久比赛"
+            }
+        ],
+        "phonetic": "/ˈmærəθən/"
+    },
+    {
+        "english": "epidemic",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "流行病；蔓延"
+            },
+            {
+                "abbreviation": "adj.",
+                "meaning": "流行的，蔓延的"
+            }
+        ],
+        "phonetic": "/ˌepɪˈdemɪk/"
+    },
+    {
+        "english": "eat away at",
+        "pos": [
+            {
+                "abbreviation": "phr.",
+                "meaning": "侵蚀，逐渐消耗"
+            }
+        ],
+        "phonetic": "/iːt əˈweɪ æt/"
+    },
+    {
+        "english": "disposed",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "有…倾向的"
+            }
+        ],
+        "phonetic": "/dɪˈspəʊzd/"
+    },
+    {
+        "english": "predisposed",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "（事先就）有…倾向的；易患…的"
+            }
+        ],
+        "phonetic": "/ˌpriːdɪˈspəʊzd/"
+    },
+    {
+        "english": "cliché",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "陈词滥调，老生常谈"
+            },
+            {
+                "abbreviation": "adj.",
+                "meaning": "陈腐的，老套的"
+            }
+        ],
+        "phonetic": "/ˈkliːʃeɪ/"
+    },
+    {
+        "english": "impulsive",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "冲动的；任性的"
+            }
+        ],
+        "phonetic": "/ɪmˈpʌlsɪv/"
+    },
+    {
+        "english": "impulse",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "冲动；冲量；推动力"
+            }
+        ],
+        "phonetic": "/ˈɪmpʌls/"
+    },
+    {
+        "english": "frontal",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "额叶的"
+            }
+        ],
+        "phonetic": "/ˈfrʌntl/"
+    },
+    {
+        "english": "cortex",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "皮层，皮质"
+            }
+        ],
+        "phonetic": "/ˈkɔːteks/"
+    },
+    {
+        "english": "quality",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "优质的，高质量的"
+            }
+        ],
+        "phonetic": "/ˈkwɒləti/"
+    },
+    {
+        "english": "dissertation",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "学位论文"
+            }
+        ],
+        "phonetic": "/ˌdɪsəˈteɪʃn/"
+    },
+    {
+        "english": "adrenaline",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "肾上腺素"
+            }
+        ],
+        "phonetic": "/əˈdrenəlɪn/"
+    },
+    {
+        "english": "burst your bubble",
+        "pos": [
+            {
+                "abbreviation": "phr.",
+                "meaning": "打破幻想；泼冷水"
+            }
+        ],
+        "phonetic": "/bɜːst jɔː(r) ˈbʌbl/"
+    },
+    {
+        "english": "the like of",
+        "pos": [
+            {
+                "abbreviation": "phr.",
+                "meaning": "类似的（人或物）"
+            }
+        ],
+        "phonetic": "/ðə laɪk əv/"
+    },
+    {
+        "english": "doom",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "厄运，劫数；悲观，沮丧"
+            },
+            {
+                "abbreviation": "v.",
+                "meaning": "注定"
+            }
+        ],
+        "phonetic": "/duːm/"
+    },
+    {
+        "english": "all-nighter",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "通宵，熬夜（的人）"
+            }
+        ],
+        "phonetic": "/ˌɔːl ˈnaɪtə(r)/"
+    },
+    {
+        "english": "unwind",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "放松；解开"
+            }
+        ],
+        "phonetic": "/ˌʌnˈwaɪnd/"
+    },
+    {
+        "english": "rewind",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "倒回，倒带"
+            }
+        ],
+        "phonetic": "/ˌriːˈwaɪnd/"
+    },
+    {
+        "english": "power through",
+        "pos": [
+            {
+                "abbreviation": "phr.",
+                "meaning": "坚持完成；强行通过"
+            }
+        ],
+        "phonetic": "/ˈpaʊə(r) θruː/"
+    },
+    {
+        "english": "Bosnia and Herzegovina",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "波斯尼亚和黑塞哥维那（波黑）"
+            }
+        ],
+        "phonetic": "/ˈbɒzniə ənd ˌhɜːtsəɡəˈviːnə/"
+    },
+    {
+        "english": "journalism",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "新闻业；新闻工作"
+            }
+        ],
+        "phonetic": "/ˈdʒɜːnəlɪzəm/"
+    },
+    {
+        "english": "editorial",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "社论；评论"
+            },
+            {
+                "abbreviation": "adj.",
+                "meaning": "编辑的；社论的"
+            }
+        ],
+        "phonetic": "/ˌedɪˈtɔːriəl/"
+    },
+    {
+        "english": "trilogy",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "三部曲"
+            }
+        ],
+        "phonetic": "/ˈtrɪlədʒi/"
+    },
+    {
+        "english": "tried",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "经过考验的，可靠的"
+            }
+        ],
+        "phonetic": "/traɪd/"
+    },
+    {
+        "english": "curated",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "精选的；策划的"
+            }
+        ],
+        "phonetic": "/kjʊəˈreɪtɪd/"
+    },
+    {
+        "english": "Norwegian",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "挪威人；挪威语"
+            },
+            {
+                "abbreviation": "adj.",
+                "meaning": "挪威的；挪威人的；挪威语的"
+            }
+        ],
+        "phonetic": "/nɔːˈwiːdʒən/"
+    },
+    {
+        "english": "get on with",
+        "pos": [
+            {
+                "abbreviation": "phr.",
+                "meaning": "继续做；与…相处融洽"
+            }
+        ],
+        "phonetic": "/ɡet ɒn wɪð/"
+    },
+    {
+        "english": "lenient",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "宽容的，仁慈的"
+            }
+        ],
+        "phonetic": "/ˈliːniənt/"
+    }
+]
