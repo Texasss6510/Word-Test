@@ -1,1 +1,375 @@
-[]
+
+[
+    {
+        "english": "appraisal",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "评价，评估；估价"
+            }
+        ],
+        "phonetic": "/əˈpreɪzl/"
+    },
+    {
+        "english": "hospitality",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "好客，殷勤招待"
+            }
+        ],
+        "phonetic": "/ˌhɒspɪˈtæləti/"
+    },
+    {
+        "english": "hospitable",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "好客的，殷勤的；环境适宜的"
+            }
+        ],
+        "phonetic": "/hɒˈspɪtəbl/"
+    },
+    {
+        "english": "metropolis",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "大都市，首府"
+            }
+        ],
+        "phonetic": "/məˈtrɒpəlɪs/"
+    },
+    {
+        "english": "futuristic",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "未来主义的；极其现代化的"
+            }
+        ],
+        "phonetic": "/ˌfjuːtʃəˈrɪstɪk/"
+    },
+    {
+        "english": "crater",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "火山口；坑，陨石坑"
+            },
+            {
+                "abbreviation": "v.",
+                "meaning": "使形成坑；塌陷"
+            }
+        ],
+        "phonetic": "/ˈkreɪtə(r)/"
+    },
+    {
+        "english": "shield",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "盾，盾牌；保护物；防护罩"
+            },
+            {
+                "abbreviation": "v.",
+                "meaning": "保护，掩护；遮挡"
+            }
+        ],
+        "phonetic": "/ʃiːld/"
+    },
+    {
+        "english": "rover",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "漫游者，流浪者；探测车"
+            }
+        ],
+        "phonetic": "/ˈrəʊvə(r)/"
+    },
+    {
+        "english": "terrain",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "地形，地势；地带"
+            }
+        ],
+        "phonetic": "/təˈreɪn/"
+    },
+    {
+        "english": "panoramic",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "全景的，远景的"
+            }
+        ],
+        "phonetic": "/ˌpænəˈræmɪk/"
+    },
+    {
+        "english": "spectrometer",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "光谱仪，分光计"
+            }
+        ],
+        "phonetic": "/spekˈtrɒmɪtə(r)/"
+    },
+    {
+        "english": "sprout",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "发芽，长出；迅速生长"
+            },
+            {
+                "abbreviation": "n.",
+                "meaning": "芽，苗；豆芽"
+            }
+        ],
+        "phonetic": "/spraʊt/"
+    },
+    {
+        "english": "crewed",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "载人的"
+            }
+        ],
+        "phonetic": "/kruːd/"
+    },
+    {
+        "english": "withstand",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "承受，抵挡"
+            }
+        ],
+        "phonetic": "/wɪðˈstænd/"
+    },
+    {
+        "english": "astronomical",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "天文的，天文学的"
+            }
+        ],
+        "phonetic": "/ˌæstrəˈnɒmɪkl/"
+    },
+    {
+        "english": "nebulae",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "星云（pl.）"
+            }
+        ],
+        "phonetic": "/ˈnebjʊliː/"
+    },
+    {
+        "english": "diameter",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "直径；放大倍数"
+            }
+        ],
+        "phonetic": "/daɪˈæmɪtə(r)/"
+    },
+    {
+        "english": "bypass",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "旁路，绕行道路"
+            },
+            {
+                "abbreviation": "v.",
+                "meaning": "绕过，避开；忽视"
+            }
+        ],
+        "phonetic": "/ˈbaɪpɑːs/"
+    },
+    {
+        "english": "hippo",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "河马"
+            }
+        ],
+        "phonetic": "/ˈhɪpəʊ/"
+    },
+    {
+        "english": "Kenya",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "肯尼亚"
+            }
+        ],
+        "phonetic": "/ˈkenjə/"
+    },
+    {
+        "english": "Kenyan",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "肯尼亚人"
+            },
+            {
+                "abbreviation": "adj.",
+                "meaning": "肯尼亚的；肯尼亚人的"
+            }
+        ],
+        "phonetic": "/ˈkenjən/"
+    },
+    {
+        "english": "brew",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "沏（茶），冲（咖啡）；酿（啤酒）；酝酿"
+            },
+            {
+                "abbreviation": "n.",
+                "meaning": "啤酒；茶，咖啡"
+            }
+        ],
+        "phonetic": "/bruː/"
+    },
+    {
+        "english": "niche",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "壁龛；合适的工作（或职位）；生态位"
+            },
+            {
+                "abbreviation": "adj.",
+                "meaning": "针对特定小群体的"
+            }
+        ],
+        "phonetic": "/niːʃ/"
+    },
+    {
+        "english": "Indonesia",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "印度尼西亚"
+            }
+        ],
+        "phonetic": "/ˌɪndəˈniːʒə/"
+    },
+    {
+        "english": "Indonesian",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "印度尼西亚人；印度尼西亚语"
+            },
+            {
+                "abbreviation": "adj.",
+                "meaning": "印度尼西亚的；印度尼西亚人的；印度尼西亚语的"
+            }
+        ],
+        "phonetic": "/ˌɪndəˈniːʒən/"
+    },
+    {
+        "english": "reckless",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "鲁莽的，不顾后果的"
+            }
+        ],
+        "phonetic": "/ˈrekləs/"
+    },
+    {
+        "english": "collide",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "碰撞，相撞；冲突，抵触"
+            }
+        ],
+        "phonetic": "/kəˈlaɪd/"
+    },
+    {
+        "english": "hospitalize",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "送…住院治疗"
+            }
+        ],
+        "phonetic": "/ˈhɒspɪtəlaɪz/"
+    },
+    {
+        "english": "fatal",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "致命的；灾难性的"
+            }
+        ],
+        "phonetic": "/ˈfeɪtl/"
+    },
+    {
+        "english": "hut",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "小屋，棚屋"
+            }
+        ],
+        "phonetic": "/hʌt/"
+    },
+    {
+        "english": "tripper",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "短途旅行者，远足者"
+            }
+        ],
+        "phonetic": "/ˈtrɪpə(r)/"
+    },
+    {
+        "english": "koala",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "考拉，树袋熊"
+            }
+        ],
+        "phonetic": "/kəʊˈɑːlə/"
+    },
+    {
+        "english": "compel",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "强迫，迫使；使不得不"
+            }
+        ],
+        "phonetic": "/kəmˈpel/"
+    },
+    {
+        "english": "compelling",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "令人信服的；引人入胜的；不可抗拒的"
+            }
+        ],
+        "phonetic": "/kəmˈpelɪŋ/"
+    }
+]

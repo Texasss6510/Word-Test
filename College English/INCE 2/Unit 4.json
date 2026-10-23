@@ -514,5 +514,15 @@
             }
         ],
         "phonetic": "/ˈliːniənt/"
+    },
+    {
+        "english": "be done with",
+        "pos": [
+            {
+                "abbreviation": "phr.",
+                "meaning": "完成，结束"
+            }
+        ],
+        "phonetic": "/biː dʌn wɪð/"
     }
 ]
