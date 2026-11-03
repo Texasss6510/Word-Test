@@ -1,1 +1,560 @@
-[]
+[
+    {
+        "english": "allege",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "声称，断言；指控"
+            }
+        ],
+        "phonetic": "/əˈledʒ/"
+    },
+    {
+        "english": "alleged",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "据称的，涉嫌的"
+            },
+            {
+                "abbreviation": "v.",
+                "meaning": "声称，断言（allege 的过去式/过去分词）"
+            }
+        ],
+        "phonetic": "/əˈledʒd/"
+    },
+    {
+        "english": "copilot",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "副驾驶员"
+            }
+        ],
+        "phonetic": "/ˈkəʊpaɪlət/"
+    },
+    {
+        "english": "aerial",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "空中的，航空的；空气的"
+            },
+            {
+                "abbreviation": "n.",
+                "meaning": "天线"
+            }
+        ],
+        "phonetic": "/ˈeəriəl/"
+    },
+    {
+        "english": "unruly",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "不守规矩的，难驾驭的；难以控制的"
+            }
+        ],
+        "phonetic": "/ʌnˈruːli/"
+    },
+    {
+        "english": "aeronautics",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "航空学，航空术"
+            }
+        ],
+        "phonetic": "/ˌeərəˈnɔːtɪks/"
+    },
+    {
+        "english": "astronautics",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "航天学，宇宙航行学"
+            }
+        ],
+        "phonetic": "/ˌæstrəˈnɔːtɪks/"
+    },
+    {
+        "english": "incapacitated",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "丧失能力的，无行为能力的；伤残的"
+            }
+        ],
+        "phonetic": "/ˌɪnkəˈpæsɪteɪtɪd/"
+    },
+    {
+        "english": "hack",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "非法侵入（计算机系统）；砍，劈；对付"
+            },
+            {
+                "abbreviation": "n.",
+                "meaning": "黑客；砍劈；蹩脚作品"
+            }
+        ],
+        "phonetic": "/hæk/"
+    },
+    {
+        "english": "hijack",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "劫持（交通工具）；强行控制"
+            },
+            {
+                "abbreviation": "n.",
+                "meaning": "劫持事件"
+            }
+        ],
+        "phonetic": "/ˈhaɪdʒæk/"
+    },
+    {
+        "english": "hijacker",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "劫持者，劫机者"
+            }
+        ],
+        "phonetic": "/ˈhaɪdʒækə(r)/"
+    },
+    {
+        "english": "rogue",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "流氓，恶棍；离群野兽"
+            },
+            {
+                "abbreviation": "adj.",
+                "meaning": "离群的；行为异常的；流氓的"
+            }
+        ],
+        "phonetic": "/rəʊɡ/"
+    },
+    {
+        "english": "negligence",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "疏忽，失职；过失"
+            }
+        ],
+        "phonetic": "/ˈneɡlɪdʒəns/"
+    },
+    {
+        "english": "Alps",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "阿尔卑斯山"
+            }
+        ],
+        "phonetic": "/ælps/"
+    },
+    {
+        "english": "head up",
+        "pos": [
+            {
+                "abbreviation": "phr.",
+                "meaning": "领导，主管；带领"
+            }
+        ],
+        "phonetic": "/hed ʌp/"
+    },
+    {
+        "english": "division",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "部门；分部"
+            }
+        ],
+        "phonetic": "/dɪˈvɪʒn/"
+    },
+    {
+        "english": "warfare",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "战争，作战；斗争"
+            }
+        ],
+        "phonetic": "/ˈwɔːfeə(r)/"
+    },
+    {
+        "english": "multinational",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "多国的；跨国公司的"
+            },
+            {
+                "abbreviation": "n.",
+                "meaning": "跨国公司"
+            }
+        ],
+        "phonetic": "/ˌmʌltiˈnæʃnəl/"
+    },
+    {
+        "english": "rotorcraft",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "旋翼机，旋翼飞行器"
+            }
+        ],
+        "phonetic": "/ˈrəʊtəkrɑːft/"
+    },
+    {
+        "english": "service branch",
+        "pos": [
+            {
+                "abbreviation": "phr.",
+                "meaning": "军种"
+            }
+        ],
+        "phonetic": "/ˈsɜːvɪs brɑːntʃ/"
+    },
+    {
+        "english": "air force",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "空军"
+            }
+        ],
+        "phonetic": "/eə(r) fɔːs/"
+    },
+    {
+        "english": "telecommunications",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "电信；电信学"
+            }
+        ],
+        "phonetic": "/ˌtelikəˌmjuːnɪˈkeɪʃnz/"
+    },
+    {
+        "english": "lease",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "租约，租契；租赁"
+            },
+            {
+                "abbreviation": "v.",
+                "meaning": "出租；租用"
+            }
+        ],
+        "phonetic": "/liːs/"
+    },
+    {
+        "english": "telecontrol",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "遥控，远距离控制"
+            }
+        ],
+        "phonetic": "/ˌtelikənˈtrəʊl/"
+    },
+    {
+        "english": "survivability",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "生存能力；生存性；抗毁性"
+            }
+        ],
+        "phonetic": "/səˌvaɪvəˈbɪləti/"
+    },
+    {
+        "english": "societal",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "社会的；社会层面的"
+            }
+        ],
+        "phonetic": "/səˈsaɪətl/"
+    },
+    {
+        "english": "manner",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "种类；方式"
+            }
+        ],
+        "phonetic": "/ˈmænə(r)/"
+    },
+    {
+        "english": "speculate",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "推测，猜测；投机"
+            }
+        ],
+        "phonetic": "/ˈspekjuleɪt/"
+    },
+    {
+        "english": "speculation",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "推测，猜测；投机"
+            }
+        ],
+        "phonetic": "/ˌspekjuˈleɪʃn/"
+    },
+    {
+        "english": "assert",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "断言，声称；维护，坚持"
+            }
+        ],
+        "phonetic": "/əˈsɜːt/"
+    },
+    {
+        "english": "assertion",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "断言，声明；主张"
+            }
+        ],
+        "phonetic": "/əˈsɜːʃn/"
+    },
+    {
+        "english": "nursing home",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "养老院，疗养院"
+            }
+        ],
+        "phonetic": "/ˈnɜːsɪŋ həʊm/"
+    },
+    {
+        "english": "guru",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "大师，专家；领袖"
+            }
+        ],
+        "phonetic": "/ˈɡʊruː/"
+    },
+    {
+        "english": "humanoid",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "类人生物，人形机器人"
+            },
+            {
+                "abbreviation": "adj.",
+                "meaning": "类人的，有人形特征的"
+            }
+        ],
+        "phonetic": "/ˈhjuːmənɔɪd/"
+    },
+    {
+        "english": "affinity",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "密切关系；亲和力；吸引力"
+            }
+        ],
+        "phonetic": "/əˈfɪnəti/"
+    },
+    {
+        "english": "triple",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "三倍的；三重的"
+            },
+            {
+                "abbreviation": "v.",
+                "meaning": "使成三倍；增至三倍"
+            },
+            {
+                "abbreviation": "n.",
+                "meaning": "三倍数；三个一组"
+            }
+        ],
+        "phonetic": "/ˈtrɪpl/"
+    },
+    {
+        "english": "gear",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "装备；设备"
+            }
+        ],
+        "phonetic": "/ɡɪə(r)/"
+    },
+    {
+        "english": "undeterred",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "未被吓住的，不气馁的"
+            }
+        ],
+        "phonetic": "/ˌʌndɪˈtɜːd/"
+    },
+    {
+        "english": "lumbar",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "腰部的，腰椎的"
+            },
+            {
+                "abbreviation": "n.",
+                "meaning": "腰椎；腰部"
+            }
+        ],
+        "phonetic": "/ˈlʌmbə(r)/"
+    },
+    {
+        "english": "bio electric",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "生物电的"
+            }
+        ],
+        "phonetic": "/ˌbaɪəʊ ɪˈlektrɪk/"
+    },
+    {
+        "english": "excretion",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "排泄；排泄物"
+            }
+        ],
+        "phonetic": "/ɪkˈskriːʃn/"
+    },
+    {
+        "english": "intestine",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "肠，肠道"
+            }
+        ],
+        "phonetic": "/ɪnˈtestɪn/"
+    },
+    {
+        "english": "intestinal",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "肠的，肠道的"
+            }
+        ],
+        "phonetic": "/ˌɪntesˈtaɪnl/"
+    },
+    {
+        "english": "lavatory",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "厕所，洗手间"
+            }
+        ],
+        "phonetic": "/ˈlævətri/"
+    },
+    {
+        "english": "harp",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "竖琴"
+            },
+            {
+                "abbreviation": "v.",
+                "meaning": "弹竖琴；喋喋不休地说"
+            }
+        ],
+        "phonetic": "/hɑːp/"
+    },
+    {
+        "english": "nuzzle",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "用鼻子蹭，依偎；轻轻摩擦"
+            }
+        ],
+        "phonetic": "/ˈnʌzl/"
+    },
+    {
+        "english": "gizmo",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "小装置，小玩意儿"
+            }
+        ],
+        "phonetic": "/ˈɡɪzməʊ/"
+    },
+    {
+        "english": "have it all",
+        "pos": [
+            {
+                "abbreviation": "phr.",
+                "meaning": "拥有一切；十全十美"
+            }
+        ],
+        "phonetic": "/hæv ɪt ɔːl/"
+    },
+    {
+        "english": "may well be",
+        "pos": [
+            {
+                "abbreviation": "phr.",
+                "meaning": "很可能是；也许是"
+            }
+        ],
+        "phonetic": "/meɪ wel biː/"
+    },
+    {
+        "english": "anonymous",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "匿名的，无名的；无特色的"
+            }
+        ],
+        "phonetic": "/əˈnɒnɪməs/"
+    },
+    {
+        "english": "appraiser",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "估价师，鉴定人"
+            }
+        ],
+        "phonetic": "/əˈpreɪzə(r)/"
+    }
+]
