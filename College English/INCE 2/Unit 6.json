@@ -552,5 +552,77 @@
             }
         ],
         "phonetic": "/əˈpreɪzə(r)/"
+    },
+    {
+        "english": "intelligence agency",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "情报机构"
+            }
+        ],
+        "phonetic": "/ɪnˈtelɪdʒəns ˈeɪdʒənsi/"
+    },
+    {
+        "english": "prefix",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "前缀"
+            },
+            {
+                "abbreviation": "v.",
+                "meaning": "加前缀于；把…置于前面"
+            }
+        ],
+        "phonetic": "/ˈpriːfɪks/"
+    },
+    {
+        "english": "suffix",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "后缀"
+            },
+            {
+                "abbreviation": "v.",
+                "meaning": "加后缀于"
+            }
+        ],
+        "phonetic": "/ˈsʌfɪks/"
+    },
+    {
+        "english": "seam",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "缝，接缝；矿层，煤层"
+            },
+            {
+                "abbreviation": "v.",
+                "meaning": "缝合；使留下痕迹"
+            }
+        ],
+        "phonetic": "/siːm/"
+    },
+    {
+        "english": "comma",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "逗号"
+            }
+        ],
+        "phonetic": "/ˈkɒməz/"
+    },
+    {
+        "english": "rest assured",
+        "pos": [
+            {
+                "abbreviation": "phr.",
+                "meaning": "请放心；尽管放心"
+            }
+        ],
+        "phonetic": "/rest əˈʃʊəd/"
     }
 ]
