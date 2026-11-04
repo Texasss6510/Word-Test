@@ -15,10 +15,6 @@
             {
                 "abbreviation": "adj.",
                 "meaning": "据称的，涉嫌的"
-            },
-            {
-                "abbreviation": "v.",
-                "meaning": "声称，断言（allege 的过去式/过去分词）"
             }
         ],
         "phonetic": "/əˈledʒd/"
@@ -92,11 +88,11 @@
         "pos": [
             {
                 "abbreviation": "v.",
-                "meaning": "非法侵入（计算机系统）；砍，劈；对付"
+                "meaning": "非法侵入（计算机系统）；砍，劈"
             },
             {
                 "abbreviation": "n.",
-                "meaning": "黑客；砍劈；蹩脚作品"
+                "meaning": "黑客；砍劈"
             }
         ],
         "phonetic": "/hæk/"
@@ -106,7 +102,7 @@
         "pos": [
             {
                 "abbreviation": "v.",
-                "meaning": "劫持（交通工具）；强行控制"
+                "meaning": "劫持（交通工具）"
             },
             {
                 "abbreviation": "n.",
@@ -130,11 +126,11 @@
         "pos": [
             {
                 "abbreviation": "n.",
-                "meaning": "流氓，恶棍；离群野兽"
+                "meaning": "流氓，恶棍；淘气鬼"
             },
             {
                 "abbreviation": "adj.",
-                "meaning": "离群的；行为异常的；流氓的"
+                "meaning": "行为异常的；离群的"
             }
         ],
         "phonetic": "/rəʊɡ/"
@@ -164,7 +160,7 @@
         "pos": [
             {
                 "abbreviation": "phr.",
-                "meaning": "领导，主管；带领"
+                "meaning": "领导，主管，带领"
             }
         ],
         "phonetic": "/hed ʌp/"
@@ -292,7 +288,7 @@
         "pos": [
             {
                 "abbreviation": "n.",
-                "meaning": "种类；方式"
+                "meaning": "种类"
             }
         ],
         "phonetic": "/ˈmænə(r)/"
@@ -362,7 +358,7 @@
         "pos": [
             {
                 "abbreviation": "n.",
-                "meaning": "类人生物，人形机器人"
+                "meaning": "人形机器人"
             },
             {
                 "abbreviation": "adj.",
@@ -376,7 +372,7 @@
         "pos": [
             {
                 "abbreviation": "n.",
-                "meaning": "密切关系；亲和力；吸引力"
+                "meaning": "喜好，喜爱；密切关系；亲和"
             }
         ],
         "phonetic": "/əˈfɪnəti/"
@@ -404,7 +400,7 @@
         "pos": [
             {
                 "abbreviation": "n.",
-                "meaning": "装备；设备"
+                "meaning": "装备，设备"
             }
         ],
         "phonetic": "/ɡɪə(r)/"
@@ -434,7 +430,7 @@
         "phonetic": "/ˈlʌmbə(r)/"
     },
     {
-        "english": "bio electric",
+        "english": "bioelectric",
         "pos": [
             {
                 "abbreviation": "adj.",
@@ -542,7 +538,7 @@
         "pos": [
             {
                 "abbreviation": "adj.",
-                "meaning": "匿名的，无名的；无特色的"
+                "meaning": "匿名的，无名的"
             }
         ],
         "phonetic": "/əˈnɒnɪməs/"
