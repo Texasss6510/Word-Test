@@ -1,1 +1,400 @@
-[]
+[
+    {
+        "english": "scorn",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "轻蔑，鄙视"
+            },
+            {
+                "abbreviation": "v.",
+                "meaning": "轻蔑，鄙视"
+            }
+        ],
+        "phonetic": "/skɔːn/"
+    },
+    {
+        "english": "fad",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "一时的风尚，短暂的狂热"
+            }
+        ],
+        "phonetic": "/fæd/"
+    },
+    {
+        "english": "workbook",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "练习册，工作手册"
+            }
+        ],
+        "phonetic": "/ˈwɜːkbʊk/"
+    },
+    {
+        "english": "workplace",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "职场；工作场所"
+            }
+        ],
+        "phonetic": "/ˈwɜːkpleɪs/"
+    },
+    {
+        "english": "bleak",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "荒凉的；黯淡的，无望的；阴冷的"
+            }
+        ],
+        "phonetic": "/bliːk/"
+    },
+    {
+        "english": "maneuver",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "细致巧妙的移动，机动动作；策略，手段"
+            },
+            {
+                "abbreviation": "v.",
+                "meaning": "巧妙移动；操纵，谋划"
+            }
+        ],
+        "phonetic": "/məˈnuːvə(r)/"
+    },
+    {
+        "english": "twisted",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "扭伤的"
+            }
+        ],
+        "phonetic": "/ˈtwɪstɪd/"
+    },
+    {
+        "english": "mocking",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "嘲弄的，讥讽的"
+            }
+        ],
+        "phonetic": "/ˈmɒkɪŋ/"
+    },
+    {
+        "english": "mockery",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "嘲笑，愚弄；笑柄"
+            }
+        ],
+        "phonetic": "/ˈmɒkəri/"
+    },
+    {
+        "english": "hairdo",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "发型"
+            }
+        ],
+        "phonetic": "/ˈheəduː/"
+    },
+    {
+        "english": "tattoo",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "纹身"
+            },
+            {
+                "abbreviation": "v.",
+                "meaning": "给…纹身"
+            }
+        ],
+        "phonetic": "/təˈtuː/"
+    },
+    {
+        "english": "raise eyebrows",
+        "pos": [
+            {
+                "abbreviation": "phr.",
+                "meaning": "引起惊讶或轻微不满，令人侧目"
+            }
+        ],
+        "phonetic": "/reɪz ˈaɪbraʊ/"
+    },
+    {
+        "english": "practicality",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "实用性；实际性；务实"
+            }
+        ],
+        "phonetic": "/ˌpræktɪˈkæləti/"
+    },
+    {
+        "english": "scrape",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "（艰难地）凑集，积累；刮，擦；擦伤"
+            },
+            {
+                "abbreviation": "n.",
+                "meaning": "擦伤，擦痕；刮擦声"
+            }
+        ],
+        "phonetic": "/skreɪp/"
+    },
+    {
+        "english": "avid",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "热衷的，热心的；渴望的，渴求的"
+            }
+        ],
+        "phonetic": "/ˈævɪd/"
+    },
+    {
+        "english": "endorse",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "为…代言；赞同，支持；背书"
+            }
+        ],
+        "phonetic": "/ɪnˈdɔːs/"
+    },
+    {
+        "english": "endorsement",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "代言；赞同，支持；背书"
+            }
+        ],
+        "phonetic": "/ɪnˈdɔːsmənt/"
+    },
+    {
+        "english": "recreational",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "娱乐的，消遣的"
+            }
+        ],
+        "phonetic": "/ˌrekriˈeɪʃənl/"
+    },
+    {
+        "english": "despise",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "鄙视，蔑视"
+            }
+        ],
+        "phonetic": "/dɪˈspaɪz/"
+    },
+    {
+        "english": "contempt",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "轻蔑，鄙视；藐视"
+            }
+        ],
+        "phonetic": "/kənˈtempt/"
+    },
+    {
+        "english": "executive",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "主管，经理；行政部门"
+            },
+            {
+                "abbreviation": "adj.",
+                "meaning": "行政的；执行的"
+            }
+        ],
+        "phonetic": "/ɪɡˈzekjətɪv/"
+    },
+    {
+        "english": "adjoining",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "毗邻的，相邻的"
+            }
+        ],
+        "phonetic": "/əˈdʒɔɪnɪŋ/"
+    },
+    {
+        "english": "inconclusive",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "不确定的，非决定性的，无结果的"
+            }
+        ],
+        "phonetic": "/ˌɪnkənˈkluːsɪv/"
+    },
+    {
+        "english": "pointless",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "无意义的，无目的的"
+            }
+        ],
+        "phonetic": "/ˈpɔɪntləs/"
+    },
+    {
+        "english": "collocation",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "搭配；词语搭配"
+            }
+        ],
+        "phonetic": "/ˌkɒləˈkeɪʃn/"
+    },
+    {
+        "english": "idiomatic",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "符合语言习惯的；地道的；习语的"
+            }
+        ],
+        "phonetic": "/ˌɪdiəˈmætɪk/"
+    },
+    {
+        "english": "cricket",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "板球；蟋蟀"
+            }
+        ],
+        "phonetic": "/ˈkrɪkɪt/"
+    },
+    {
+        "english": "hockey",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "曲棍球；冰球"
+            }
+        ],
+        "phonetic": "/ˈhɒki/"
+    },
+    {
+        "english": "sprint",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "短跑，冲刺"
+            },
+            {
+                "abbreviation": "n.",
+                "meaning": "短跑；冲刺"
+            }
+        ],
+        "phonetic": "/sprɪnt/"
+    },
+    {
+        "english": "hurdle",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "跨栏；障碍，难关"
+            },
+            {
+                "abbreviation": "v.",
+                "meaning": "跨越；克服"
+            }
+        ],
+        "phonetic": "/ˈhɜːdl/"
+    },
+    {
+        "english": "rink",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "溜冰场；冰球场"
+            }
+        ],
+        "phonetic": "/rɪŋk/"
+    },
+    {
+        "english": "crawl",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "自由泳"
+            }
+        ],
+        "phonetic": "/krɔːl/"
+    },
+    {
+        "english": "avocation",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "业余爱好，副业"
+            }
+        ],
+        "phonetic": "/ˌævəʊˈkeɪʃn/"
+    },
+    {
+        "english": "ecstatic",
+        "pos": [
+            {
+                "abbreviation": "adj.",
+                "meaning": "狂喜的，欣喜若狂的"
+            }
+        ],
+        "phonetic": "/ɪkˈstætɪk/"
+    },
+    {
+        "english": "deride",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "嘲笑，讥讽"
+            }
+        ],
+        "phonetic": "/dɪˈraɪd/"
+    },
+    {
+        "english": "dote",
+        "pos": [
+            {
+                "abbreviation": "v.",
+                "meaning": "溺爱，宠爱"
+            }
+        ],
+        "phonetic": "/dəʊt/"
+    },
+    {
+        "english": "derision",
+        "pos": [
+            {
+                "abbreviation": "n.",
+                "meaning": "嘲笑，讥笑；笑柄"
+            }
+        ],
+        "phonetic": "/dɪˈrɪʒn/"
+    }
+]
