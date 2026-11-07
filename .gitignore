@@ -1,3 +1,2 @@
-# 本地临时文件：调试脚本、临时预览服务器等
-# 上次 .tmp-preview.mjs 被误提交并推到了 GitHub Pages，这一条防止再犯。
 .tmp*
+.workbuddy/

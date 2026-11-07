@@ -169,17 +169,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBarFill = document.getElementById('progressBarFill');
 
     // --- Views ---
+    const homeView = document.getElementById('homeView');
     const wordSelectionView = document.getElementById('wordSelectionView');
     const readyToStartView = document.getElementById('readyToStartView');
+    const quizSetupView = document.getElementById('quizSetupView');
     const reviewView = document.getElementById('reviewView');
     const reviewCompleteView = document.getElementById('reviewCompleteView');
-    const views = [wordSelectionView, readyToStartView, reviewView, reviewCompleteView];
+    const views = [homeView, wordSelectionView, readyToStartView, quizSetupView, reviewView, reviewCompleteView];
 
     // --- Effects ---
     const confettiCanvas = document.getElementById('confettiCanvas');
     const completionTitle = document.getElementById('completionTitle');
     const completionMessage = document.getElementById('completionMessage');
     const completionUnitLabel = document.getElementById('completionUnitLabel');
+    // 随机抽查：首页入口 + 设置页 + 完成页成绩区
+    const openBookListButton = document.getElementById('openBookListButton');
+    const openRandomQuizButton = document.getElementById('openRandomQuizButton');
+    const bookListBackButton = document.getElementById('bookListBackButton');
+    const quizSetupScope = document.getElementById('quizSetupScope');
+    const quizSetupCount = document.getElementById('quizSetupCount');
+    const quizSetupBackButton = document.getElementById('quizSetupBackButton');
+    const quizRetryButton = document.getElementById('quizRetryButton');
+    const quizAvoidRecent = document.getElementById('quizAvoidRecent');
+    const quizStatus = document.getElementById('quizStatus');
+    const startRandomSpellingButton = document.getElementById('startRandomSpelling');
+    const startRandomDictationButton = document.getElementById('startRandomDictation');
+    const quizResultsBlock = document.getElementById('quizResultsBlock');
+    const quizSummary = document.getElementById('quizSummary');
+    const quizNote = document.getElementById('quizNote');
+    const quizResultsTableBody = document.querySelector('#quizResultsTable tbody');
+    const quizAgainButton = document.getElementById('quizAgainButton');
+    const quizAgainLabel = document.getElementById('quizAgainLabel');
+    const quizBackButton = document.getElementById('quizBackButton');
+    const questionSource = document.getElementById('questionSource');
+    const questionSourceText = document.getElementById('questionSourceText');
 
     // --- Application State ---
     let wordList = [];
@@ -250,6 +273,391 @@ document.addEventListener('DOMContentLoaded', () => {
             const j = Math.floor(Math.random() * (i + 1));
             [arr[i], arr[j]] = [arr[j], arr[i]];
         }
+    }
+
+    // --- 随机抽查 -----------------------------------------------------------
+    // 跨全部词书抽 50 词，两条约束：
+    //   1. 同一轮不重复——按 english 归一化去重，同一个词跨书出现也只算一次；
+    //   2. 可跨轮避开最近 3 轮抽过的词，降低短期重复感。
+    // 只存单词本身，不存释义：150 个字符串，不会撑爆 localStorage。
+    const QUIZ_SIZE = 50;
+    const QUIZ_HISTORY_KEY = 'wordtest.quizHistory.v1';
+    const QUIZ_HISTORY_ROUNDS = 3;
+
+    let quizPoolCache = null;
+    let quizPoolPromise = null;
+    let quizPoolFailures = 0;
+    let quizResults = [];
+    let quizStartedAt = 0;
+    let quizElapsedMs = 0;
+    let quizMode = 'spelling';
+    let isRandomQuiz = false;
+    let quizAvoidNote = '';
+
+    function readQuizHistory() {
+        try {
+            const raw = localStorage.getItem(QUIZ_HISTORY_KEY);
+            if (!raw) return [];
+            const parsed = JSON.parse(raw);
+            if (!parsed || !Array.isArray(parsed.rounds)) return [];
+            return parsed.rounds.filter(Array.isArray).slice(0, QUIZ_HISTORY_ROUNDS);
+        } catch (err) {
+            // 隐私模式 / 存储被禁用时不该让整页挂掉，按「没有记录」处理
+            console.warn('读取抽查记录失败:', err);
+            return [];
+        }
+    }
+
+    function saveQuizRound(words) {
+        try {
+            const rounds = readQuizHistory();
+            rounds.unshift(words.map(word => word.english.toLowerCase()));
+            localStorage.setItem(QUIZ_HISTORY_KEY, JSON.stringify({
+                version: 1,
+                rounds: rounds.slice(0, QUIZ_HISTORY_ROUNDS)
+            }));
+        } catch (err) {
+            console.warn('保存抽查记录失败，本轮不受影响:', err);
+        }
+    }
+
+    /** 把 wordBook 里三种层级（groups / lists）统一摊平成 path 列表，并带上完整出处。 */
+    function collectAllListPaths() {
+        const paths = [];
+        wordBook.forEach(book => {
+            if (Array.isArray(book.groups)) {
+                book.groups.forEach(group => {
+                    group.lists.forEach(list => paths.push({
+                        path: list.path,
+                        source: [book.category, group.name, list.name].filter(Boolean).join(' · ')
+                    }));
+                });
+            } else if (Array.isArray(book.lists)) {
+                book.lists.forEach(list => paths.push({
+                    path: list.path,
+                    source: [book.category, list.name].filter(Boolean).join(' · ')
+                }));
+            }
+        });
+        return paths;
+    }
+
+    /**
+     * 加载全库并去重。46 个文件一次性并发请求，浏览器自己会按域名排队；
+     * 单个单元 404 或格式坏掉只跳过它，不让整轮抽查失败。
+     */
+    function buildQuizPool() {
+        if (quizPoolCache) return Promise.resolve(quizPoolCache);
+        if (quizPoolPromise) return quizPoolPromise;
+
+        const lists = collectAllListPaths();
+        let finished = 0;
+        quizPoolFailures = 0;
+        quizSetupScope.textContent = `Loading word lists… 0/${lists.length}`;
+
+        quizPoolPromise = Promise.allSettled(lists.map(async item => {
+            try {
+                const response = await fetch(item.path);
+                // 404 是「这一单元还没录入」的占位，不算故障；
+                // 其余非 2xx 与网络错误要计数，否则会静默少掉一整本书
+                if (response.status === 404) return [];
+                if (!response.ok) {
+                    quizPoolFailures++;
+                    return [];
+                }
+                const data = await response.json();
+                if (!Array.isArray(data)) {
+                    quizPoolFailures++;
+                    return [];
+                }
+                return data
+                    .filter(word => word && typeof word.english === 'string' && word.english.trim() && Array.isArray(word.pos))
+                    .map(word => ({
+                        english: word.english.trim(),
+                        pos: word.pos,
+                        phonetic: typeof word.phonetic === 'string' ? word.phonetic : '',
+                        source: item.source
+                    }));
+            } catch (err) {
+                quizPoolFailures++;
+                return [];
+            } finally {
+                finished++;
+                // 每 5 个更新一次即可：46 次连续改写会让读屏软件念个不停
+                if (finished === lists.length || finished % 5 === 0) {
+                    quizSetupScope.textContent = `Loading word lists… ${finished}/${lists.length}`;
+                }
+            }
+        })).then(results => {
+            const seen = new Set();
+            const pool = [];
+            results.forEach(result => {
+                if (result.status !== 'fulfilled') return;
+                result.value.forEach(word => {
+                    const key = word.english.toLowerCase();
+                    if (seen.has(key)) return;
+                    seen.add(key);
+                    pool.push(word);
+                });
+            });
+            quizPoolCache = pool;
+            quizPoolPromise = null;
+            return pool;
+        }).catch(err => {
+            quizPoolPromise = null;
+            throw err;
+        });
+
+        return quizPoolPromise;
+    }
+
+    /**
+     * 抽取。避重逐层放宽：能排 3 轮就 3 轮，排完不够 50 就退到 2 轮、1 轮，
+     * 最后一层仍不够才允许重复——否则用户会被卡在「凑不满一轮」的死角。
+     */
+    function drawQuizWords(pool, count, avoidRounds) {
+        const history = readQuizHistory();
+        const usableRounds = Math.min(avoidRounds, history.length);
+        let excluded = new Set();
+        let usedRounds = 0;
+
+        for (let i = 0; i < usableRounds; i++) {
+            const next = new Set(excluded);
+            history[i].forEach(key => next.add(key));
+            const remaining = pool.reduce(
+                (total, word) => total + (next.has(word.english.toLowerCase()) ? 0 : 1),
+                0
+            );
+            if (remaining < count) break;
+            excluded = next;
+            usedRounds = i + 1;
+        }
+
+        let candidates = excluded.size
+            ? pool.filter(word => !excluded.has(word.english.toLowerCase()))
+            : pool.slice();
+
+        if (candidates.length < count) {
+            candidates = pool.slice();
+            usedRounds = 0;
+        }
+
+        // 部分洗牌：只打乱前 count 个位置，不必把两千多个词全排一遍
+        const take = Math.min(count, candidates.length);
+        for (let i = 0; i < take; i++) {
+            const j = i + Math.floor(Math.random() * (candidates.length - i));
+            [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
+        }
+
+        return { words: candidates.slice(0, take), usedRounds, usableRounds };
+    }
+
+    /** 只记第一次作答：答错后再改对仍然算错，那才是真实的第一反应。 */
+    function recordQuizAnswer(index, status, userInput) {
+        if (!isRandomQuiz || quizResults[index]) return;
+        quizResults[index] = { status, userInput: userInput || '' };
+    }
+
+    function formatDuration(ms) {
+        const totalSeconds = Math.max(0, Math.round(ms / 1000));
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        return `${minutes}:${String(seconds).padStart(2, '0')}`;
+    }
+
+    function setQuizButtonsDisabled(disabled) {
+        startRandomSpellingButton.disabled = disabled;
+        startRandomDictationButton.disabled = disabled;
+        quizStatus.setAttribute('aria-busy', String(disabled));
+    }
+
+    /** 加载失败的词表数：404 占位不算，只有真正读不出来的才算。 */
+    function quizLoadWarning() {
+        if (quizPoolFailures === 0) return '';
+        return `${quizPoolFailures} word list${quizPoolFailures === 1 ? '' : 's'} could not be loaded.`;
+    }
+
+    let quizSetupLoading = false;
+
+    /**
+     * 进入设置页时准备全库。加载完成前两个模式按钮保持禁用，
+     * 避免用户点下去却拿到一个空题库。
+     */
+    async function prepareQuizSetup({ retry = false } = {}) {
+        if (quizSetupLoading) return;
+        quizSetupLoading = true;
+        quizRetryButton.hidden = true;
+        quizStatus.textContent = '';
+        setQuizButtonsDisabled(true);
+
+        if (retry) {
+            quizPoolCache = null;
+            quizPoolPromise = null;
+            quizPoolFailures = 0;
+        }
+
+        try {
+            const pool = await buildQuizPool();
+            if (pool.length === 0) throw new Error('empty pool');
+            const warning = quizLoadWarning();
+            quizSetupScope.textContent =
+                `${pool.length.toLocaleString()} unique words across every book — ${QUIZ_SIZE} per round.`
+                + (warning ? ` ${warning}` : '');
+            setQuizButtonsDisabled(false);
+        } catch (err) {
+            console.error('抽查题库加载失败:', err);
+            quizSetupScope.textContent = 'Word lists could not be loaded.';
+            quizStatus.textContent = 'Check your connection, then try again.';
+            quizRetryButton.hidden = false;
+        } finally {
+            quizSetupLoading = false;
+        }
+    }
+
+    async function startRandomQuiz(mode) {
+        if (startRandomSpellingButton.disabled) return;
+        setQuizButtonsDisabled(true);
+        quizStatus.textContent = '';
+
+        try {
+            const pool = await buildQuizPool();
+            if (pool.length === 0) {
+                quizStatus.textContent = 'No words could be loaded. Check your connection and try again.';
+                return;
+            }
+            quizSetupScope.textContent =
+                `${pool.length.toLocaleString()} unique words across every book — ${QUIZ_SIZE} per round.`;
+
+            const avoidRounds = quizAvoidRecent.checked ? QUIZ_HISTORY_ROUNDS : 0;
+            const { words, usedRounds, usableRounds } = drawQuizWords(pool, QUIZ_SIZE, avoidRounds);
+
+            if (words.length === 0) {
+                quizStatus.textContent = 'No words available for a quiz.';
+                return;
+            }
+
+            const loadNote = quizLoadWarning();
+            const avoidNote = usedRounds < usableRounds
+                ? `Your last ${usableRounds} quizzes cover most of the library, so a few words repeat this round.`
+                : '';
+            quizAvoidNote = [loadNote, avoidNote].filter(Boolean).join(' ');
+
+            quizMode = mode;
+            isRandomQuiz = true;
+            wordList = words;
+            quizResults = new Array(words.length);
+            quizStartedAt = performance.now();
+            quizElapsedMs = 0;
+            currentListPath = '__random_quiz__';
+            currentCategoryName = 'All Books';
+            currentUnitName = 'Random Quiz';
+
+            // 抽完即记账：中途退出也算这些词「最近出现过」，避免下次立刻重逢
+            saveQuizRound(words);
+
+            quizStatus.textContent = '';
+            startReview(mode);
+        } catch (err) {
+            console.error('随机抽查启动失败:', err);
+            isRandomQuiz = false;
+            quizStatus.textContent = 'Failed to start the quiz. Please try again.';
+        } finally {
+            setQuizButtonsDisabled(false);
+        }
+    }
+
+    /** 释义用 DOM 拼，不拼 innerHTML——这条路径以后可能要接用户导入的词表。 */
+    function meaningFragment(posEntries) {
+        const fragment = document.createDocumentFragment();
+        (posEntries || []).forEach(entry => {
+            const line = document.createElement('div');
+            line.className = 'meaning-line';
+
+            const abbr = document.createElement('span');
+            abbr.className = 'pos-abbr';
+            abbr.textContent = entry && entry.abbreviation ? entry.abbreviation : '';
+
+            const meaning = document.createElement('span');
+            meaning.className = 'pos-meaning';
+            meaning.textContent = entry && entry.meaning ? entry.meaning : '';
+
+            line.append(abbr, meaning);
+            fragment.appendChild(line);
+        });
+        return fragment;
+    }
+
+    function displayQuizResults() {
+        const total = wordList.length;
+        const correct = quizResults.filter(result => result && result.status === 'correct').length;
+        const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
+
+        completionUnitLabel.textContent =
+            `All Books · Random Quiz · ${quizMode === 'dictation' ? 'Dictation' : 'Spelling'}`;
+        completionTitle.textContent = correct === total && total > 0 ? '🎉 Flawless!' : 'Quiz Complete!';
+        const missed = total - correct;
+        completionMessage.textContent = missed === 0
+            ? `All ${total} words correct — clean sweep.`
+            : `${missed} word${missed === 1 ? '' : 's'} to revisit. Full breakdown below.`;
+
+        // 与单元模式互斥：抽查只给成绩与逐题对照，不提供错题重练或导出
+        incorrectWordsContainer.classList.add('is-hidden');
+        reviewMistakesButton.style.display = 'none';
+        restartButton.style.display = 'none';
+        goBackButton.style.display = 'none';
+        quizResultsBlock.classList.remove('is-hidden');
+
+        quizSummary.innerHTML = `
+            <div class="quiz-stat">
+                <span class="quiz-stat-value">${correct}<span class="quiz-stat-total">/${total}</span></span>
+                <span class="quiz-stat-label">Correct</span>
+            </div>
+            <div class="quiz-stat">
+                <span class="quiz-stat-value">${accuracy}%</span>
+                <span class="quiz-stat-label">Accuracy</span>
+            </div>
+            <div class="quiz-stat">
+                <span class="quiz-stat-value">${formatDuration(quizElapsedMs)}</span>
+                <span class="quiz-stat-label">Time</span>
+            </div>
+        `;
+
+        quizNote.textContent = quizAvoidNote;
+        quizNote.hidden = !quizAvoidNote;
+
+        quizResultsTableBody.innerHTML = '';
+        wordList.forEach((word, index) => {
+            const result = quizResults[index];
+            const row = quizResultsTableBody.insertRow();
+
+            row.insertCell().textContent = String(index + 1);
+
+            const wordCell = row.insertCell();
+            wordCell.textContent = word.english;
+            if (word.source) {
+                const sourceLine = document.createElement('span');
+                sourceLine.className = 'quiz-word-source';
+                sourceLine.textContent = word.source;
+                wordCell.appendChild(sourceLine);
+            }
+
+            row.insertCell().appendChild(meaningFragment(word.pos));
+            row.insertCell().textContent = result && result.userInput ? result.userInput : '—';
+
+            const status = result ? result.status : 'skipped';
+            const badge = document.createElement('span');
+            badge.className = `quiz-result ${status}`;
+            badge.textContent = status === 'correct'
+                ? 'Correct'
+                : status === 'revealed' ? 'Revealed'
+                : status === 'skipped' ? 'Skipped' : 'Wrong';
+            row.insertCell().appendChild(badge);
+        });
+
+        const tableScroll = quizResultsBlock.querySelector('.quiz-table-scroll');
+        if (tableScroll) tableScroll.scrollTop = 0;
+
+        if (correct === total && total > 0) launchConfetti(180);
     }
 
     // --- 发音 ---------------------------------------------------------------
@@ -793,6 +1201,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentWordIndex < wordList.length) {
             const word = wordList[currentWordIndex];
 
+            // 抽查模式标出这个词出自哪本书、哪一册、哪一单元。
+            // 单元练习里恒为隐藏——那时用户本来就知道自己在哪。
+            if (isRandomQuiz && word.source) {
+                questionSourceText.textContent = word.source;
+                questionSource.title = word.source;
+                questionSource.hidden = false;
+            } else {
+                questionSourceText.textContent = '';
+                questionSource.removeAttribute('title');
+                questionSource.hidden = true;
+            }
+
             if (reviewMode === 'dictation') {
                 // 听写模式原本是整张空白卡片——这里给一个不泄题的视觉锚点。
                 // 这个标签在整个听写过程中是静止的，所以只在还没写过时写一次，
@@ -820,8 +1240,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (reviewMode !== 'dictation') animateIn(wordStage);
             userAnswerInput.focus();
         } else {
+            quizElapsedMs = isRandomQuiz ? performance.now() - quizStartedAt : 0;
             updateAppView('reviewComplete');
-            displayIncorrectWords();
+            if (isRandomQuiz) {
+                displayQuizResults();
+            } else {
+                displayIncorrectWords();
+            }
         }
     }
 
@@ -858,6 +1283,7 @@ document.addEventListener('DOMContentLoaded', () => {
             playCorrectSound();
             resultFeedback.textContent = `✨ Correct!`;
             resultFeedback.className = 'message-feedback correct-message is-visible';
+            recordQuizAnswer(currentWordIndex, 'correct', userAnswer);
             currentWordIndex++;
             updateProgressDisplay();
             // 【不】清空输入框——让答案留在屏幕上，和考察的单词一起切换。
@@ -869,6 +1295,7 @@ document.addEventListener('DOMContentLoaded', () => {
             playIncorrectSound();
             resultFeedback.textContent = `🤔 Incorrect — the answer is ${currentWord.english}`;
             resultFeedback.className = 'message-feedback error-message is-visible';
+            recordQuizAnswer(currentWordIndex, 'wrong', userAnswer);
 
             if (!incorrectWords.some(item => item.english === currentWord.english)) {
                 incorrectWords.push({ ...currentWord, userInput: userAnswer });
@@ -891,6 +1318,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const word = wordList[currentWordIndex];
         const typed = userAnswerInput.value.trim();
+        recordQuizAnswer(currentWordIndex, 'revealed', typed);
 
         if (!incorrectWords.some(item => item.english === word.english)) {
             incorrectWords.push({ ...word, userInput: typed });
@@ -916,7 +1344,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * 一个单元错了十几个词，没必要整本重来。
      */
     function reviewMistakesOnly() {
-        if (incorrectWords.length === 0) return;
+        if (isRandomQuiz || incorrectWords.length === 0) return;
         wordList = incorrectWords.map(w => ({
             english: w.english,
             pos: w.pos,
@@ -944,6 +1372,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayIncorrectWords() {
         incorrectWordsTableBody.innerHTML = '';
+
+        // 回到单元模式：收起抽查成绩区，并恢复上一条路径隐藏掉的按钮
+        quizResultsBlock.classList.add('is-hidden');
+        restartButton.style.display = '';
+        goBackButton.style.display = '';
 
         // 完成页也标一遍：做完一单元后经常想确认刚才练的是哪个
         completionUnitLabel.textContent = currentUnitLabelText();
@@ -1070,6 +1503,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadWordsButton.addEventListener('click', () => {
         if (!selectedUnitPath) return;
+        // 从抽查切回单元：清掉抽查会话，避免完成页走错分支
+        isRandomQuiz = false;
+        quizResults = [];
         currentListPath = selectedUnitPath;
         // dataset.fullName 带着分册名（"Book 2 - Unit 3"），
         // 而胶囊上只显示 "Unit 3"——导出文件名和顶部标识需要完整名字
@@ -1083,6 +1519,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startSpellingButton.addEventListener('click', () => startReview('spelling'));
     startDictationButton.addEventListener('click', () => startReview('dictation'));
+
+    // 首页两个模式：词书进入原来的选书页，抽查进入设置页
+    openBookListButton.addEventListener('click', () => updateAppView('wordSelection'));
+    bookListBackButton.addEventListener('click', () => updateAppView('home'));
+
+    openRandomQuizButton.addEventListener('click', () => {
+        isRandomQuiz = false;
+        quizResults = [];
+        quizAvoidNote = '';
+        quizStatus.textContent = '';
+        updateAppView('quizSetup');
+        prepareQuizSetup();
+    });
+
+    quizSetupBackButton.addEventListener('click', () => updateAppView('home'));
+    quizRetryButton.addEventListener('click', () => prepareQuizSetup({ retry: true }));
+
+    startRandomSpellingButton.addEventListener('click', () => startRandomQuiz('spelling'));
+    startRandomDictationButton.addEventListener('click', () => startRandomQuiz('dictation'));
 
     // 等下一个单词的这段时间里，用户一动手就立刻推进，不用干等。
     // 但输入框里还留着上一题的答案，所以要把那一段摘掉，
@@ -1110,13 +1565,23 @@ document.addEventListener('DOMContentLoaded', () => {
     exportButton.addEventListener('click', exportIncorrectWordsList);
 
     restartButton.addEventListener('click', startCurrentReview);
-    backToSelectionButton.addEventListener('click', () => updateAppView('wordSelection'));
-    goBackButton.addEventListener('click', () => updateAppView('wordSelection'));
+    backToSelectionButton.addEventListener('click', () => {
+        isRandomQuiz = false;
+        quizResults = [];
+        updateAppView('wordSelection');
+    });
+    goBackButton.addEventListener('click', () => {
+        isRandomQuiz = false;
+        quizResults = [];
+        updateAppView('wordSelection');
+    });
 
     // 复习中途的出口：随时能回到主菜单，不把人困在流程里
     exitReviewButton.addEventListener('click', () => {
         clearAdvance();
-        updateAppView('wordSelection');
+        isRandomQuiz = false;
+        quizResults = [];
+        updateAppView('home');
     });
 
     playAudioButton.addEventListener('click', () => {
@@ -1137,6 +1602,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     reviewMistakesButton.addEventListener('click', reviewMistakesOnly);
 
+    // 抽查再来一轮：沿用同一模式，但避重记录已经更新，会自动换一批词
+    quizAgainButton.addEventListener('click', () => {
+        quizResultsBlock.classList.add('is-hidden');
+        quizResults = [];
+        startRandomQuiz(quizMode);
+    });
+
+    quizBackButton.addEventListener('click', () => {
+        isRandomQuiz = false;
+        quizResults = [];
+        quizAvoidNote = '';
+        quizResultsBlock.classList.add('is-hidden');
+        wordList = [];
+        incorrectWords = [];
+        resetProgress();
+        updateAppView('home');
+    });
+
     window.addEventListener('resize', () => {
         if (confettiParticles.length > 0) resizeConfettiCanvas();
     });
@@ -1145,6 +1628,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 这里【不】分配撒花画布：一张全屏 DPR2 画布在 iPad 上要十几 MB，而且是全程常驻的。
     // launchConfetti() 内部会按需分配，画完再归还（见 stepConfetti）。
     populateCategorySelector();
-    updateAppView('wordSelection');
+    quizAgainLabel.textContent = `Try Another ${QUIZ_SIZE}`;
+    quizSetupCount.textContent = String(QUIZ_SIZE);
+    updateAppView('home');
     updateProgressDisplay();
 });

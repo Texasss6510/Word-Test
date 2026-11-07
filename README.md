@@ -10,13 +10,24 @@ No account, no install, works on desktop and mobile.
 
 ## How to use it
 
-### 1. Pick a word list
+### 1. Choose a mode
+
+The home screen offers two ways in:
+
+| Mode | What it does |
+| --- | --- |
+| **Word List** | Pick a book and a unit, then practise exactly those words. |
+| **Random Quiz** | Draw 50 words from every book at once — see [Random quiz](#random-quiz--50-words-from-everywhere). |
+
+Each mode opens on its own screen; **Menu** at the top left takes you back to the home screen.
+
+### 2. Pick a word list
 
 Choose a **book** — College English, CET 4, Stardew Valley, My Little Pony, or NMET Vocabulary…… Then pick a **unit** and hit **Start Learning**.
 
 The unit picker adapts to the book. College English is split into volumes (Book 1–3, INCE 2, VLS 2), so a **volume switcher** appears first and the units of that volume are laid out as **pills** — one tap each, all visible at once. The other books have a single flat list of units; with up to 42 units in NMET Vocabulary, a wall of pills would be unreadable, so those keep a **unit dropdown**. Either way the layout stays the same width, so nothing jumps around when you switch books.
 
-### 2. Pick a mode
+### 3. Pick a practice mode
 
 | Mode | What you see | What you do |
 | --- | --- | --- |
@@ -25,7 +36,7 @@ The unit picker adapts to the book. College English is split into volumes (Book 
 
 Both modes test the same words — they just hand you different clues.
 
-### 3. Answer
+### 4. Answer
 
 Type into the box and press **Enter**.
 
@@ -35,7 +46,7 @@ Type into the box and press **Enter**.
 
 > Don't want to wait? Start typing the next word, or just hit **Enter** — the pause is skippable, and whatever you typed during it is kept.
 
-### 4. Review your mistakes
+### 5. Review your mistakes
 
 When you reach the end you get a table of everything you missed — word, meaning, phonetic, and what you typed.
 
@@ -46,11 +57,28 @@ When you reach the end you get a table of everything you missed — word, meanin
 
 ---
 
+## Random quiz — 50 words from everywhere
+
+Choose **Random Quiz** on the home screen. The setup screen draws 50 words from every book at once, without going through the unit picker.
+
+| | |
+| --- | --- |
+| **Range** | Every word in every book. A word that appears in several books is counted once — 2,465 unique words at the time of writing. |
+| **Length** | 50 questions per round. |
+| **No repeats** | A word never appears twice within a round. By default, words from your **last three quizzes** are skipped as well; untick the box to allow them. If the pool ever runs short, the skip range relaxes automatically and the result page says so. |
+| **Modes** | The same **Spelling** and **Dictation** as a normal unit — one click starts the round. |
+| **Source** | Every question shows where the word comes from — book, volume and unit, e.g. `College English · Book 2 · Unit 3`. The result table lists it under each word. |
+| **Results** | Correct count, accuracy, total time, and a row-by-row table of all 50 questions with your answer and the outcome (Correct / Wrong / Revealed). |
+
+The quiz stores a small record in `localStorage` — word keys only, no meanings — so it can avoid recent words. Clearing site data resets it. Nothing leaves your device.
+
+---
+
 ## On-screen controls
 
 | Control | What it does |
 | --- | --- |
-| **Menu** | Leave mid-review and go back to the start |
+| **Menu** | Leave mid-review and go back to the home screen |
 | **Phonetic** | Show or hide the phonetic for the current word |
 | **Answer** | Reveal the answer and record it as a mistake |
 | 🔊 (beside the input) | Replay the pronunciation |
@@ -200,13 +228,24 @@ Icons from [Lucide](https://lucide.dev/) (ISC licence).
 
 ## 怎么用
 
-### 1. 选一本单词书
+### 1. 选择模式
+
+首页只有两个入口：
+
+| 模式 | 作用 |
+| --- | --- |
+| **Word List** | 选一本书和一个单元，只练这些词。 |
+| **Random Quiz** | 从全部词书里抽 50 个词，见下方「随机抽查」。 |
+
+两个模式各自进入独立页面，左上角 **Menu** 返回首页。
+
+### 2. 选一本单词书
 
 先选**书本**——College English / CET 4 / Stardew Valley / My Little Pony / NMET Vocabulary……再挑一个**单元**，点 **Start Learning**。
 
 单元选择器会跟着书本变形。College English 分了册（Book 1–3、INCE 2、VLS 2），所以会先出一个**分册切换器**，然后把该册的单元摊成**胶囊**——一屏看全，一次点击就选中。其余几本书都是单层列表；NMET Vocabulary 有 42 个单元，摊成一堵胶囊墙反而更难找，所以它们保留**单元下拉框**。两种形式的宽度一致，换书时版面不会跳。
 
-### 2. 选一种模式
+### 3. 选一种模式
 
 | 模式 | 你会看到 | 你要做 |
 | --- | --- | --- |
@@ -215,7 +254,7 @@ Icons from [Lucide](https://lucide.dev/) (ISC licence).
 
 两种模式考的是同一批词，区别只是给你的线索不同。
 
-### 3. 作答
+### 4. 作答
 
 在输入框里敲单词，按 **Enter** 提交。
 
@@ -225,14 +264,31 @@ Icons from [Lucide](https://lucide.dev/) (ISC licence).
 
 > 不想等？**直接开始打下个词**或按 **Enter** 就立刻跳过。等待期间敲进去的字母会被保留，不会被清掉。
 
-### 4. 看结果
+### 5. 看结果
 
 全部过完之后会列出错题表——单词、释义、音标、以及你当时输错的答案。
 
 - **Export Mistakes** —— 导出 CSV（Excel 能直接打开，中文不乱码）
 - **Review Mistakes** —— **只把错题重新组成一轮**，不用整本重来
 - **Restart This Unit** —— 整个单元重来一遍（会重新打乱顺序）
-- **Back to Book List** —— 回到最开始
+- **Back to Book List** —— 回到选书页
+
+---
+
+## 随机抽查 —— 从全部词书里抽 50 个
+
+在首页选择 **Random Quiz**。设置页不经过单元选择，直接从全部词书里抽 50 个词。
+
+| | |
+| --- | --- |
+| **范围** | 所有词书的所有单词。同一个词在多本书里出现只算一次——目前是 2,465 个唯一词。 |
+| **数量** | 每轮固定 50 题。 |
+| **不重复** | 同一轮内一个词不会出现两次；默认还会跳过**最近三轮**抽过的词，取消勾选即可放开。万一题库不够抽，避重范围会自动放宽，结果页会写明。 |
+| **模式** | 与普通单元相同的 **Spelling** 和 **Dictation**，点一下直接开考。 |
+| **出处** | 每道题都会标出这个词来自哪本书、哪一册、哪一单元，例如 `College English · Book 2 · Unit 3`；结果表的单词下方也会列出。 |
+| **结果** | 正确数、正确率、总用时，以及全部 50 题的逐题对照表：你的答案与结果（Correct / Wrong / Revealed）。 |
+
+抽查会在 `localStorage` 里存一份很小的记录——只存单词键，不存释义——用来避开最近抽过的词。清除站点数据即可重置，不会上传任何内容。
 
 ---
 

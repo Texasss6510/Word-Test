@@ -82,6 +82,9 @@
             <circle cx="12" cy="12" r="6"/>
             <circle cx="12" cy="12" r="2"/>
         </symbol>
+        <symbol id="i-chevron-right" viewBox="0 0 24 24">
+            <path d="m9 18 6-6-6-6"/>
+        </symbol>
     </svg>
 
     <canvas id="confettiCanvas" aria-hidden="true"></canvas>
@@ -92,8 +95,46 @@
         </header>
 
         <main id="appMainContent" class="app-main">
-            <div id="wordSelectionView" class="view active-view">
+            <!-- 首页只做两件事：进词书，或直接抽查。
+                 两套设置都收进各自的子页面，首页因此只保留两个入口。 -->
+            <div id="homeView" class="view active-view">
                 <div class="view-content">
+                    <svg class="icon welcome-icon" aria-hidden="true"><use href="#i-book-open"/></svg>
+                    <p class="instruction-text">Choose how you want to study</p>
+
+                    <div class="mode-cards">
+                        <button id="openBookListButton" class="mode-card">
+                            <span class="mode-card-icon">
+                                <svg class="icon" aria-hidden="true"><use href="#i-list"/></svg>
+                            </span>
+                            <span class="mode-card-copy">
+                                <span class="mode-card-title">Word List</span>
+                                <span class="mode-card-sub">Pick a book, then a unit</span>
+                            </span>
+                            <svg class="icon mode-card-chevron" aria-hidden="true"><use href="#i-chevron-right"/></svg>
+                        </button>
+
+                        <button id="openRandomQuizButton" class="mode-card">
+                            <span class="mode-card-icon">
+                                <svg class="icon" aria-hidden="true"><use href="#i-target"/></svg>
+                            </span>
+                            <span class="mode-card-copy">
+                                <span class="mode-card-title">Random Quiz</span>
+                                <span class="mode-card-sub">50 words from every book</span>
+                            </span>
+                            <svg class="icon mode-card-chevron" aria-hidden="true"><use href="#i-chevron-right"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="wordSelectionView" class="view">
+                <div class="view-content">
+                    <div class="subpage-nav">
+                        <button id="bookListBackButton" class="button ghost-button">
+                            <svg class="icon" aria-hidden="true"><use href="#i-chevron-left"/></svg> Menu
+                        </button>
+                    </div>
                     <svg class="icon welcome-icon" aria-hidden="true"><use href="#i-book-open"/></svg>
                     <p class="instruction-text">Choose a word list to review</p>
 
@@ -125,6 +166,43 @@
                 </div>
             </div>
 
+            <!-- 抽查设置页：从首页入口进来后才出现。
+                 范围固定为全部词书，这里只让用户选模式、决定要不要避开最近抽过的词。 -->
+            <div id="quizSetupView" class="view">
+                <div class="view-content">
+                    <svg class="icon welcome-icon" aria-hidden="true"><use href="#i-target"/></svg>
+                    <h2 class="quiz-setup-title">Random Quiz</h2>
+                    <p id="quizSetupScope" class="quiz-setup-scope">Loading word lists…</p>
+
+                    <div class="quiz-setup-facts">
+                        <span><b id="quizSetupCount">50</b> questions</span>
+                        <span><b>All</b> books</span>
+                        <span><b>No</b> repeats</span>
+                    </div>
+
+                    <label class="quiz-toggle quiz-toggle-centered">
+                        <input type="checkbox" id="quizAvoidRecent" checked>
+                        <span>Skip words from my last 3 quizzes</span>
+                    </label>
+
+                    <div class="quiz-actions">
+                        <button id="startRandomSpelling" class="button primary-button">
+                            <svg class="icon" aria-hidden="true"><use href="#i-keyboard"/></svg> Spelling
+                        </button>
+                        <button id="startRandomDictation" class="button secondary-button">
+                            <svg class="icon" aria-hidden="true"><use href="#i-headphones"/></svg> Dictation
+                        </button>
+                    </div>
+
+                    <p id="quizStatus" class="quiz-status" role="status" aria-live="polite"></p>
+
+                    <button id="quizRetryButton" class="button secondary-button" hidden>Try Again</button>
+                    <button id="quizSetupBackButton" class="button secondary-button back-button">
+                        <svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg> Back to Menu
+                    </button>
+                </div>
+            </div>
+
             <div id="readyToStartView" class="view">
                 <div class="view-content">
                     <p id="fileLoadedInfo" class="info-text"></p>
@@ -151,6 +229,12 @@
                     <span id="currentUnitLabel" class="unit-label"></span>
                 </div>
                 <div class="review-card">
+                    <!-- 抽查时标出这个词出自哪本书、哪一册、哪一单元。
+                         单元练习里恒为隐藏——那时用户本来就知道自己在哪。 -->
+                    <div id="questionSource" class="question-source" hidden>
+                        <svg class="icon" aria-hidden="true"><use href="#i-book-open"/></svg>
+                        <span id="questionSourceText"></span>
+                    </div>
                     <div id="wordStage" class="word-stage">
                         <div id="currentChineseHint" class="hint-text large-hint"></div>
                         <div id="phonetic" class="phonetic-display"></div>
@@ -212,6 +296,34 @@
                     <button id="goBackButton" class="button secondary-button back-button">
                         <svg class="icon" aria-hidden="true"><use href="#i-list"/></svg> Back to Book List
                     </button>
+
+                    <!-- 随机抽查专属成绩区：整轮 50 题的逐题对照。
+                         与「错题表」互斥显示，由 JS 按会话类型切换。 -->
+                    <div id="quizResultsBlock" class="quiz-results is-hidden">
+                        <div id="quizSummary" class="quiz-summary"></div>
+                        <p id="quizNote" class="quiz-note" hidden></p>
+                        <div class="table-scroll quiz-table-scroll">
+                            <table id="quizResultsTable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Word</th>
+                                        <th>Meaning</th>
+                                        <th>Your Answer</th>
+                                        <th>Result</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                        <button id="quizAgainButton" class="button primary-button">
+                            <svg class="icon" aria-hidden="true"><use href="#i-rotate-ccw"/></svg>
+                            <span id="quizAgainLabel">Try Another 50</span>
+                        </button>
+                        <button id="quizBackButton" class="button secondary-button back-button">
+                            <svg class="icon" aria-hidden="true"><use href="#i-list"/></svg> Back to Menu
+                        </button>
+                    </div>
                 </div>
             </div>
         </main>
@@ -228,6 +340,7 @@
         </footer>
     </div>
 
-    <script src="script.js"></script>
+    <!-- 改动 script.js 后请同步修改这里的版本号，避免浏览器继续使用缓存的旧脚本 -->
+    <script src="script.js?v=2026-11-07g"></script>
 </body>
 </html>
